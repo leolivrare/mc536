@@ -3,7 +3,7 @@
 
 # Tarefa 2
 
-![Imagem](images/tarefa2.png)
+![Imagem](images/diagrama.jpeg)
 
 Base de dados utilizada na tarefa 2: 
 - https://data.cityofnewyork.us/Health/COVID-19-Daily-Counts-of-Cases-Hospitalizations-an/rc75-m7u3
