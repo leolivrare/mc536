@@ -5,14 +5,14 @@
 Calcule o Pagerank do exemplo da Wikipedia em Cypher:
 
 ~~~cypher
-//Load dos dados:
+//Load dos dados
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/santanche/lab2learn/master/network/pagerank/pagerank-wikipedia.csv' AS line
 MERGE (p1:Page {name:line.source})
 MERGE (p2:Page {name:line.target})
 CREATE (p1)-[:LINKS]->(p2)
 ~~~
 ~~~cypher
-Solução:
+//Solução
 CALL gds.graph.create(
   'prGraph',
   'Page',
@@ -32,7 +32,7 @@ ORDER BY score DESC, name ASC;
 Departing from a Drug-Drug graph created in a previous lab, whose relationship determines drugs taken together, apply a community detection in it to see the results:
 
 ~~~cypher
-//Criando o grafo:
+//Criando o grafo
 CALL gds.graph.create(
   'communityGraph',
   'Drug',
@@ -46,7 +46,7 @@ CALL gds.graph.create(
 ~~~
 
 ~~~cypher
-//Com pesos:
+//Com pesos
 CALL gds.louvain.stream('communityGraph',  {relationshipWeightProperty: 'weight'})
 YIELD nodeId, communityId
 RETURN gds.util.asNode(nodeId).name AS name, communityId
@@ -59,7 +59,7 @@ RETURN a.name as source, b.name as target;
 ![Comunidade](images/lab07_2.png)
 
 ~~~cypher
-//Sem pesos:
+//Sem pesos
 CALL gds.louvain.stream('communitDrugGraph')
 YIELD nodeId, communityId
 RETURN gds.util.asNode(nodeId).code AS code, communityId
